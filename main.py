@@ -59,12 +59,17 @@ def step_2():
         if len(surface_arb) > 0:
             real_rate_arb = func_arbitrage.get_depth_from_orderbook(surface_arb)
             print(real_rate_arb)
-            time.sleep(1)
+            time.sleep(2)
 
 """ MAIN """
 if __name__ == "__main__":
-    # coin_list = step_0()
-    # structured_pairs = step_1(coin_list)
+    print("Retrieving list of cryptos...")
+    coin_list = step_0()
+
+    print("Structuring cryptos into triangular pairs (2 mins)...")
+    structured_pairs = step_1(coin_list)
+
+    print("Running scanning algorithm (will run until killed)...")
     while True:
         time.sleep(1)
         step_2()
